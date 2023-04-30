@@ -1,12 +1,20 @@
+#ifndef VARIANT8_FUNCTIONS
+#define VARIANT8_FUNCTIONS
 #include <iostream>
 #include <vector>
 
-// Объявления функций
+// Объявление функций
 std::vector<std::vector<int>> create_matrix();
 bool is_inside_circle(const std::vector<int> &, const int &);
 double avg_abscissa(const std::vector<std::vector<int>> &);
 double avg_ordinate(const std::vector<std::vector<int>> &);
 
+// Выводит !номера! неподходящих точек (то есть индекс + 1)
+void number_of_inappropriate_dots(const int &,
+                                  const std::vector<std::vector<int>> &,
+                                  const int &);
+
+// Реализация функций
 std::vector<std::vector<int>> create_matrix() {
 
     // Кол-во точек (строк), кол-во столбцов фиксировано по условию - 2 (x, y)
@@ -54,3 +62,15 @@ double avg_ordinate(const std::vector<std::vector<int>> &dots) {
     return summa / dots.size();
 }
 
+void number_of_inappropriate_dots(const int &start,
+                                  const std::vector<std::vector<int>> &dots,
+                                  const int &radius) {
+    // start - первый индекс, в котором мы встретили неподходящую точку
+    for (int i(start); i < dots.size(); ++i) {
+        if (!is_inside_circle(dots[i], radius)) {
+            std::cout << i + 1 << "dot is out of circle\n";
+        }
+    }
+}
+
+#endif
