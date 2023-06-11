@@ -5,13 +5,19 @@
 
 // y = k*x + b
 class Linear {
-    int k_coef;
-    int b_coef;
+    double k_coef;
+    double b_coef;
 
   public:
-    Linear(int &, int &);
+    Linear(const double &k = 1, const double &b = 0);
+    void set_k(const double&);
+    void set_b(const double&);
+    double get_k();
+    double get_b();
+
     // Значение x в однородном уравнении (y = 0)
     double get_x_of_homogeneous_equation();
+    double calculate_y_from_x(double x);
     void show_graphic();
 };
 
